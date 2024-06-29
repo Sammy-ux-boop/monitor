@@ -53,23 +53,23 @@ function updateInfoPanel(feature, year) {
     var constituency = feature.properties.CONSTITUEN;
     var county = feature.properties.COUNTY_NAM;
     var mpName = feature.properties.MP_NAME;
-    var party =feature.properties.Political_Party;
+    var party = feature.properties.Political_Party;
     var mpImageUrl = feature.properties.MP_IMAGE_URL;
     var vote = feature.properties["Voting " + year];
-    
+
     var infoPanel = document.getElementById('info-panel');
     infoPanel.innerHTML = `
-        <h><strong>Constituency</strong>:${constituency}</h>
+        <h><strong>Constituency</strong>: ${constituency}</h>
         <p><strong>County:</strong> ${county}</p>
-        <p><strong>Political Party</strong> ${party}</p>
+        <p><strong>Political Party:</strong> ${party}</p>
         <p><strong>MP:</strong> ${mpName}</p>
-        <img src="${mpImageUrl}" alt="${mpName}" style="width:100px;height:auto;">
+        <img src="${mpImageUrl}" alt="${mpName}" class="img-fluid mb-2">
         <p><strong>Vote ${year}:</strong> ${vote}</p>
     `;
 }
 
 // Event listener for year selection
-document.getElementById('year-select').addEventListener('change', function() {
+document.getElementById('year-select').addEventListener('change', function () {
     var selectedYear = this.value;
     axios.get('constituencies.geojson')
         .then(function (response) {
@@ -81,7 +81,7 @@ document.getElementById('year-select').addEventListener('change', function() {
         });
 });
 
-// Static texts array
+// Static texts array for rotation
 const staticTexts = [
     "Observe Your Member of Parliament",
     "Stay Informed About Legislative Changes",
@@ -92,11 +92,11 @@ const staticTexts = [
 // Index to track current static text
 let staticTextIndex = 0;
 
-// Function to update static text
+// Function to update static text every 10 seconds
 function updateStaticText() {
     const staticTextElement = document.querySelector('.static-text');
     staticTextElement.textContent = staticTexts[staticTextIndex];
-    
+
     staticTextIndex = (staticTextIndex + 1) % staticTexts.length; // Loop through texts
 }
 
@@ -105,4 +105,3 @@ updateStaticText();
 
 // Optionally, update static text at intervals (e.g., every 10 seconds)
 setInterval(updateStaticText, 10000); // 10000 milliseconds = 10 seconds
-

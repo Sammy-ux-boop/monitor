@@ -13,7 +13,7 @@ body, html {
 /* Style the map container */
 #map {
     width: 100%;
-    height: 60vh; /* Adjust height to fit well on phone */
+    height: 60vh; /* Adjust height to fit well on desktop */
 }
 
 /* Style the info panel container */
@@ -25,6 +25,15 @@ body, html {
     padding: 20px;
     box-sizing: border-box;
     overflow-y: auto; /* Enable scrolling if content exceeds panel height */
+}
+
+
+/* Adjust MP image size */
+#info-panel img {
+    max-width: 100px; /* Set maximum width of MP image */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensure image is block-level */
+    margin-bottom: 10px; /* Add some margin below the image */
 }
 
 /* Style controls for year selection */
@@ -63,12 +72,12 @@ body, html {
 
 .static-text-container {
     position: absolute;
-    top: 50%; /* Center vertically */
-    left: 20px; /* Adjust left position as needed */
-    transform: translateY(-50%);
+    bottom: 20px; /* Adjust bottom position as needed */
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 1000;
-    text-align: center; /* Center text on mobile */
-    width: 90%; /* Adjust width for mobile */
+    text-align: center;
+    width: 90%;
 }
 
 .static-text {

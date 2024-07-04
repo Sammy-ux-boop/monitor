@@ -81,7 +81,7 @@ body, html {
 }
 
 .static-text {
-    font-size: 15px; /* Adjust font size */
+    font-size: 21px; /* Adjust font size */
     font-style: italic; /* Apply italic font style */
     animation: change-color 10s linear infinite; /* Apply color change animation */
 }
